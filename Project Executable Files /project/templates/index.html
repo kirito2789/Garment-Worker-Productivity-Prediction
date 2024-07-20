@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unlocking Productivity of Garment Workers</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #4CAF50;
+            overflow: hidden;
+        }
+        nav a {
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+        nav a:hover {
+            background-color: #3e8e41;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        .content {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn-primary:hover {
+            background-color: #3e8e41;
+        }
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .image-item {
+            width: 30%; 
+            margin: 10px; 
+        }
+        .image-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>UNLOCKING PRODUCTIVITY OF GARMENT WORKERS</h1>
+</header>
+
+<nav>
+    <a href="#">HOME</a>
+    <a href="#">TRIVIA</a>
+    <a href="#">WHY US</a>
+    <a href="#">DEPARTMENT</a>
+    <a href="#">FAQ'S</a>
+    <a href="#">CONTACT</a>
+</nav>
+
+<div class="container">
+    <div class="content">
+        <h2>UNLEASH THE FULL POTENTIAL OF YOUR GARMENT WORKERS</h2>
+        <p>Empower your garment workers with cutting-edge productivity prediction tools. Our web page revolutionizes garment manufacturing by leveraging advanced algorithms to optimize efficiency, reduce costs, and boost productivity to new heights.</p>
+        <form action="/predict">
+            <button type="submit" class="btn-primary">MAKE YOUR PREDICTION</button>
+        </form>
+    </div>
+</div>
+
+<!-- Image gallery section -->
+<div class="container">
+    <div class="image-grid">
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='image1.jpg') }}" alt="Image 1">
+        </div>
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='image2.jpg') }}" alt="Image 2">
+        </div>
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='image3.jpg') }}" alt="Image 3">
+        </div>
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='image4.jpg') }}" alt="Image 4">
+        </div>
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='image5.jpg') }}" alt="Image 5">
+        </div>
+        <div class="image-item">
+            <img src="{{ url_for('static', filename='image6.jpg') }}" alt="Image 6">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Productivity</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #00796b;
+        }
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .tooltip {
+            position: absolute;
+            top: -5px;
+            right: 10px;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #00796b;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: -5px;
+            right: 30px;
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            white-space: nowrap;
+            z-index: 1000;
+        }
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+        }
+                }
+        .form-control {
+            border-radius: 5px;
+            padding: 10px;
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        .form-control:focus {
+            border-color: #00796b;
+            box-shadow: 0 0 5px rgba(0, 121, 107, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Predict Productivity</h2>
+        <form action="/data_predict" method="post">
+            <div class="form-group">
+                <label for="quarter">Quarter:</label>
+                <span class="tooltip" data-tooltip="Select the quarter">?</span>
+                <select id="quarter" name="Quarter" class="form-control" required>
+                    <option value="0">Quarter 0</option>
+                    <option value="1">Quarter 1</option>
+                    <option value="2">Quarter 2</option>
+                    <option value="3">Quarter 3</option>
+                    <option value="4">Quarter 4</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="department">Department:</label>
+                <span class="tooltip" data-tooltip="Select the department">?</span>
+                <select id="department" name="Department" class="form-control" required>
+                    <option value="Sewing">Sewing</option>
+                    <option value="Finishing">Finishing</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="day">Day of the week:</label>
+                <span class="tooltip" data-tooltip="Select the day of the week">?</span>
+                <select id="day" name="Day of the week" class="form-control" required>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                    <option value="Friday">Friday</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="team">Team Number:</label>
+                <span class="tooltip" data-tooltip="Enter the team number">?</span>
+                <input type="number" id="team" name="Team Number" class="form-control" placeholder="Enter team number" required min="0">
+            </div>
+            <div class="form-group">
+                <label for="time">Time Allocated:</label>
+                <span class="tooltip" data-tooltip="Enter the time allocated in hours">?</span>
+                <input type="number" id="time" name="Time Allocated" class="form-control" placeholder="Enter time allocated" required min="0">
+            </div>
+            <div class="form-group">
+                <label for="items">Unfinished Items:</label>
+                <span class="tooltip" data-tooltip="Enter the number of unfinished items">?</span>
+                <input type="number" id="items" name="Unfinished Items" class="form-control" placeholder="Enter unfinished items" required min="0">
+            </div>
+            <div class="form-group">
+                <label for="overtime">Over time:</label>
+                <span class="tooltip" data-tooltip="Enter the overtime in hours">?</span>
+                <input type="number" id="overtime" name="Over time" class="form-control" placeholder="Enter overtime" required min="0">
+            </div>
+            <div class="form-group">
+                <label for="incentive">Incentive:</label>
+                <span class="tooltip" data-tooltip="Enter the incentive amount">?</span>
+                <input type="number" id="incentive" name="Incentive" class="form-control" placeholder="Enter incentive" required min="0">
+            </div>
+            <div class="form-group">
+                <label for="idle_time">Idle Time:</label>
+                <span class="tooltip" data-tooltip="Enter the idle time in minutes">?</span>
+                <input type="number" id="idle_time" name="Idle Time" class="form-control" placeholder="Enter idle time" required min="0">
+            </div>
+            <div class="form-group">
+                <label for="idle_men">Idle Men:</label>
+                <span class="tooltip" data-tooltip="Enter the number of idle men">?</span>
+                <input type="number" id="idle_men" name="Idle Men" class="form-control" placeholder="Enter idle men" required min="0">
+            </div>
+            <div class="form-group">
+                <label for="style">Style Change:</label>
+                <span class="tooltip" data-tooltip="Enter the style change number">?</span>
+                <input type="number" id="style" name="Style Change" class="form-control" placeholder="Enter style change" required min="0">
+            </div>
+            <div class="form-group">
+                <label for="workers">Number of Workers:</label>
+                <span class="tooltip" data-tooltip="Enter the number of workers">?</span>
+                <input type="number" id="workers" name="Number of Workers" class="form-control" placeholder="Enter number of workers" required min="0">
+            </div>
+            <div class="form-group">
+                <label for="targeted_productivity">Targeted Productivity:</label>
+                <span class="tooltip" data-tooltip="Enter the targeted productivity (0-1)">?</span>
+                <input type="number" step="0.01" id="targeted_productivity" name="targeted productivity" class="form-control" placeholder="Enter targeted productivity" min="0" max="1" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
